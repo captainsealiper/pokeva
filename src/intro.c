@@ -41,6 +41,7 @@
 */
 
 // Scene 1 main tasks
+static void MainCB2_EndIntro(void);
 static void Task_Scene1_FadeIn(u8);
 static void Task_Scene1_WaterDrops(u8);
 static void Task_Scene1_PanUp(u8);
