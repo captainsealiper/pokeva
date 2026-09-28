@@ -1499,17 +1499,20 @@ static void Task_NewGameBirchSpeech_StartPlayerFadeIn(u8 taskId)
             gTasks[taskId].tPlayerGender = MALE;
             NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
             NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_WaitForPlayerFadeIn;
+            gSaveBlock2Ptr->playerGender = MALE;
+            gTasks[taskId].func = Task_NewGameBirchSpeech_StartNamingScreen;
         }
     }
 }
-
+ 
 static void Task_NewGameBirchSpeech_WaitForPlayerFadeIn(u8 taskId)
 {
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
-        gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
-        gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
+        gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = 0;
+        gSaveBlock2Ptr->playerGender = MALE;
+        gTasks[taskId].func = Task_NewGameBirchSpeech_StartNamingScreen;
+        //gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
     }
 }
 
@@ -1669,9 +1672,9 @@ static void Task_NewGameBirchSpeech_ProcessNameYesNoMenu(u8 taskId)
         gTasks[taskId].func = Task_NewGameBirchSpeech_SlidePlatformAway2;
         break;
     case MENU_B_PRESSED:
-    case 1:
-        PlaySE(SE_SELECT);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
+      case 1:
+            PlaySE(SE_SELECT);
+            gTasks[taskId].func = Task_NewGameBirchSpeech_StartNamingScreen;
     }
 }
 
