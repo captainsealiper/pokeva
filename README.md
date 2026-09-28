@@ -1,13 +1,12 @@
 # About `pokeva`
 
+ 
+
 nothing right now! 
 
+
+
 Based off RHH's pokeemerald-expansion 1.17.0 https://github.com/rh-hideout/pokeemerald-expansion/
-
-
-Please consider [crediting all contributors](CREDITS.md) involved in the project!
-
-
 
 # [Documentation](https://rh-hideout.github.io/pokeemerald-expansion/)
 
